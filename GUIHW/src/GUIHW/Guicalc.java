@@ -26,16 +26,16 @@ public class Guicalc extends JFrame {
 			
 	Guicalc() {
 		
-		this.setTitle("°è»ê±â");
+		this.setTitle("ê³„ì‚°ê¸°");
 
-		Image icon = Toolkit.getDefaultToolkit().getImage("calc.png"); // calculator Æú´õ¿¡ ÀÌ¹ÌÁö ÀúÀåÇÏ¿©
-		this.setIconImage(icon);										// °è»ê±â ¾ÆÀÌÄÜ ÁöÁ¤
+		Image icon = Toolkit.getDefaultToolkit().getImage("calc.png"); // calculator í´ë”ì— ì´ë¯¸ì§€ ì €ìž¥í•˜ì—¬
+		this.setIconImage(icon);										// ê³„ì‚°ê¸° ì•„ì´ì½˜ ì§€ì •
 		this.setBounds(300, 300, 400, 550);
 		
 		JTextField display = new JTextField();
 		display.setText("0");
-		display.setFont(new Font("¸¼À½°íµñÃ¼", Font.BOLD, 30));
-		display.setHorizontalAlignment(JTextField.RIGHT); // ¿À¸¥ÂÊÁ¤·Ä
+		display.setFont(new Font("ë§‘ìŒê³ ë”•ì²´", Font.BOLD, 30));
+		display.setHorizontalAlignment(JTextField.RIGHT); // ì˜¤ë¥¸ìª½ì •ë ¬
 		
 		JLabel status = new JLabel();
 		status.setHorizontalAlignment(JLabel.RIGHT);
@@ -48,10 +48,10 @@ public class Guicalc extends JFrame {
 		
 		// 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
 		JButton btn0 = new JButton("0");
-		btn0.addActionListener( e -> { // addActionListener¸¦ »ç¿ëÇØ ¹öÆ° Å¬¸¯½Ã ÀÌº¥Æ® ¼³Á¤
+		btn0.addActionListener( e -> { // addActionListenerë¥¼ ì‚¬ìš©í•´ ë²„íŠ¼ í´ë¦­ì‹œ ì´ë²¤íŠ¸ ì„¤ì •
 			if( display.getText().equals("0")) {
-				display.setText( btn0.getText() );	
-				status.setText( btn0.getText() );
+				display.setText( btn0.getText() ); // displayì— ë²„íŠ¼ ê°’ì„ 	
+				status.setText( btn0.getText() ); // statusì— ë²„íŠ¼ ê°’ì„ ë°›ìŒ
 			} else {
 				display.setText( display.getText() + btn0.getText() );
 				status.setText( display.getText() + btn0.getText() );
@@ -175,7 +175,7 @@ public class Guicalc extends JFrame {
 				operator = "-";
 		});
 		
-		JButton btndiv = new JButton("¡À");
+		JButton btndiv = new JButton("Ã·");
 		btndiv.addActionListener( e -> {
 			op1 = Double.parseDouble( display.getText() );
 				display.setText("0");
@@ -216,7 +216,7 @@ public class Guicalc extends JFrame {
 			status.setText( "" + result );
 		});
 		
-		// +/-, ©ö/x, x©÷, ©÷¡îx
+		// +/-, Â¹/x, xÂ², Â²âˆšx
 		JButton btnSign = new JButton("+/-");
 		btnSign.addActionListener(e -> {
 			double result = -1 * Double.parseDouble(display.getText());
@@ -225,39 +225,39 @@ public class Guicalc extends JFrame {
 			operator = "+/-";
 		});
 		
-		JButton btnx1 = new JButton("©ö/x");
+		JButton btnx1 = new JButton("Â¹/x");
 		btnx1.addActionListener(e -> {
 			double result = 1 / Double.parseDouble(display.getText());
 			display.setText("" + result);
 			status.setText("" + result);
-			operator = "©ö/x";
+			operator = "Â¹/x";
 		});
 		
-		JButton btnx2 = new JButton("x©÷");
+		JButton btnx2 = new JButton("xÂ²");
 		btnx2.addActionListener(e -> {
 			double result = Math.pow(Double.parseDouble(display.getText()), 2);
 			display.setText("" + result);
 			status.setText("" + result);
-			operator = "x©÷";
+			operator = "xÂ²";
 		});
 
-		JButton btnSqrt = new JButton("©÷¡îx");
+		JButton btnSqrt = new JButton("Â²âˆšx");
 		btnSqrt.addActionListener(e -> {
 			double result = Math.sqrt(Double.parseDouble(display.getText()));
 			display.setText("" + result);
 			status.setText("" + result);
-			operator = "©÷¡îx";
+			operator = "Â²âˆšx";
 		});
 		
 		// C, CE, BackSpace
-		JButton btnBack = new JButton("¡ç");
+		JButton btnBack = new JButton("â†");
 		btnBack.addActionListener(e -> {
 			display.getText().substring(0, display.getText().length() - 1);
 			display.setText(display.getText().substring(0, display.getText().length() - 1));
 
 			if(display.getText().length() < 1) {
 				display.setText("0");
-				status.setText("0"); // ÀÚ¸´°ªÀÌ 1º¸´Ù ³·À¸¸é display & status 0À¸·Î º¸Á¤
+				status.setText("0"); // ìžë¦¿ê°’ì´ 1ë³´ë‹¤ ë‚®ìœ¼ë©´ display & status 0ìœ¼ë¡œ ë³´ì •
 			}
 		});
 		
@@ -277,6 +277,7 @@ public class Guicalc extends JFrame {
 		});
 			
 		
+		// ë²„íŠ¼ ë°°ì—´
 		panel.add(btnPer);panel.add(btnDel);panel.add(btnClear);panel.add(btnBack);
 		panel.add(btnx1);panel.add(btnx2);panel.add(btnSqrt);panel.add(btndiv);
 		panel.add(btn7);panel.add(btn8);panel.add(btn9);panel.add(btnMult);
@@ -292,7 +293,7 @@ public class Guicalc extends JFrame {
 	
 	
 
-	private double guicalc(double op1, double op2, String operator) { // ¿¬»ê ÄÚµå
+	private double guicalc(double op1, double op2, String operator) { // ì—°ì‚° ì½”ë“œ
 		double result = 0;
 
 		switch( operator ) {
@@ -320,7 +321,7 @@ public class Guicalc extends JFrame {
 	}
 	
 
-	public static void main(String[] args) { // °è»ê±â º¸ÀÌ±â
+	public static void main(String[] args) { // ê³„ì‚°ê¸° ë³´ì´ê¸°
 		new Guicalc().setVisible(true);
 	}
 	
