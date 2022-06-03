@@ -50,7 +50,7 @@ public class Guicalc extends JFrame {
 		JButton btn0 = new JButton("0");
 		btn0.addActionListener( e -> { // addActionListener를 사용해 버튼 클릭시 이벤트 설정
 			if( display.getText().equals("0")) {
-				display.setText( btn0.getText() ); // display에 버튼 값을 	
+				display.setText( btn0.getText() ); // display에 버튼 값을 받음	
 				status.setText( btn0.getText() ); // status에 버튼 값을 받음
 			} else {
 				display.setText( display.getText() + btn0.getText() );
